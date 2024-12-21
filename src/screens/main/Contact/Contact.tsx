@@ -4,7 +4,6 @@ import Members from './members';
 import MapView, { Marker } from "react-native-maps";
 
 const Contact = () => {
-  // convert tiếng anh
   const team = [
     {
       name: 'Nguyễn Quốc Chung',

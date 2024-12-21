@@ -79,7 +79,7 @@ const Payment = ({ route }: any) => {
         } else {
             cost = 13000 + (distanceInKm - 5) * 100; 
         }
-        return Math.floor(cost);
+        return Math.floor(cost * 0.001);
     };
     return (
         <Box flex={1} bg="gray.100" safeAreaTop>

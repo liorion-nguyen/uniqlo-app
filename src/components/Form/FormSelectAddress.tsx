@@ -20,7 +20,7 @@ export default function FormSelectAddress({ items, label, placeholder, onValueCh
           }} 
           borderWidth={0}
           color="white"
-          onValueChange={itemValue => onValueChange(itemValue)}
+          onValueChange={(itemValue: any) => onValueChange(itemValue)}
         >
           {items.map((item) => (
             <Select.Item  key={item.id} label={item.full_name} value={item.id} />

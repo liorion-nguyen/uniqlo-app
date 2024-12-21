@@ -2,7 +2,6 @@ import { StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { FlatList, Spinner } from "native-base";
 import PostCard from "../../../components/Blog/postCard";
-import { BlogType } from "../../../types/redux/blog";
 import { useSelector } from "react-redux";
 import { dispatch, RootState } from "../../../redux/store";
 import { getBlogs } from "../../../redux/slices/blog";

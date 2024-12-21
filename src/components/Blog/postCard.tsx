@@ -1,8 +1,7 @@
 import { Dimensions, StyleSheet } from "react-native";
 import React from "react";
-import { Column, IStackProps, Pressable, Text } from "native-base";
+import { Column, Pressable, Text, Image } from "native-base";
 import PostOwner from "./postOwner";
-import { Image } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import PostFooter from "./postFooter";
 import { useSelector } from "react-redux";

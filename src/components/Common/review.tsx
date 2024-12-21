@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Box, VStack, HStack, Text, Avatar, Divider, Button, Input, Select, CheckIcon, Menu, Pressable, ThreeDotsIcon } from 'native-base';
 import { Rating } from 'react-native-ratings';
-import { useDispatch } from 'react-redux';
-import { useRoute } from '@react-navigation/native';
 import { ReviewType } from '../../types/redux/product';
 import { createReviewProduct, deleteReviewProduct } from '../../redux/slices/product';
 import { dispatch } from '../../redux/store';
@@ -121,7 +119,7 @@ const CustomerReview = ({ data, id }: { data: ReviewType[]; id: string }) => {
                         <Divider mt={2} />
                     </VStack>
                     <Box w="10%" alignItems="center" style={{ position: 'absolute', right: 0 }}>
-                        <Menu w="100" trigger={triggerProps => {
+                        <Menu w="100" trigger={(triggerProps: any) => {
                             return <Pressable accessibilityLabel="More options menu" {...triggerProps}>
                                 <ThreeDotsIcon />
                             </Pressable>;
@@ -171,7 +169,7 @@ const CustomerReview = ({ data, id }: { data: ReviewType[]; id: string }) => {
                 <Input
                     placeholder={'Write Review'}
                     value={review}
-                    onChangeText={(text) => setReview(text)}
+                    onChangeText={(text: string) => setReview(text)}
                 />
                 <Button
                     colorScheme="primary"

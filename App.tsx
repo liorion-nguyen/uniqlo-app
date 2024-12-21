@@ -1,20 +1,22 @@
+import { StyleSheet } from 'react-native';
+import Root from './src/navigations/Root';
+import { NativeBaseProvider } from 'native-base';
+import appTheme from './src/theme';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import setupAxiosInterceptors from './src/config/axiosConfig';
+import Toast from 'react-native-toast-message';
 
 export default function App() {
+  setupAxiosInterceptors(() => {});
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider theme={appTheme}>
+      <Provider store={store}>
+        <StatusBar style="light" />
+        <Root />
+        <Toast />
+      </Provider>
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

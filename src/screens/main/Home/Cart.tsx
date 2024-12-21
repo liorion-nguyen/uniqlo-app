@@ -22,7 +22,7 @@ export default function Cart() {
 
     useEffect(() => {
         if (carts.length > 0) {
-            const newCarts = carts.map(cart => ({
+            const newCarts = carts.map((cart: any) => ({
                 ...cart,
                 isChecked: false,
             }));
@@ -63,7 +63,7 @@ export default function Cart() {
                 setProducts(productsFind);
                 handleProductChange(product);
             }
-        } 
+        }
     };
 
     // Tăng số lượng sản phẩm
@@ -104,9 +104,8 @@ export default function Cart() {
             }
         }
     };
-
     return (
-        <SafeAreaView style={styles.container}>
+        <Box style={styles.container} safeAreaTop>
             <Box style={styles.boxHeader}>
                 <Text style={styles.textTitle}>Giỏ hàng</Text>
                 <Box style={styles.boxTotal}>
@@ -123,7 +122,7 @@ export default function Cart() {
                     <Spinner size="lg" />
                 </View> : (
                     <ScrollView style={styles.container}>
-                        {products.map((product) => (
+                        {products.length > 0 && products.map((product) => (
                             <Box key={product._id} style={styles.productContainer}>
                                 <HStack space={3} alignItems="center">
                                     <Checkbox
@@ -206,7 +205,7 @@ export default function Cart() {
                     </ScrollView>
                 )
             }
-        </SafeAreaView>
+        </Box>
     );
 }
 

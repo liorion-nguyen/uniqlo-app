@@ -83,17 +83,12 @@ export default function ProductDetail({ route }: { route: any }) {
     const averageRating = calculateAverageRating(product?.reviews);
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <Box style={styles.safeArea} safeAreaTop>
             <MenuBuy product={product} />
             <ScrollView style={styles.container}>
                 <Slider data={
                     product.Product_images.map((image: string) => ({ image }))
                 } />
-                {/* <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.imageSlider}>
-                    {product.Product_images.map((image: string, index: number) => (
-                        <Image key={index} source={{ uri: image }} style={styles.productImage} />
-                    ))}
-                </ScrollView> */}
 
                 <Box style={styles.productInfo}>
                     <View style={styles.productNameContainer}>
@@ -145,7 +140,7 @@ export default function ProductDetail({ route }: { route: any }) {
                     <RecommendedProducts productsProps={shuffleArray(products)} />
                 </Box>
             </ScrollView>
-        </SafeAreaView>
+        </Box>
     );
 }
 

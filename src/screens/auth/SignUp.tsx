@@ -184,7 +184,7 @@ const SignUp = ({ navigation, route }: Props) => {
         <FormControl>
           <FormInput
             placeholder="Password"
-            type="password"
+            secureTextEntry={true}
             onChangeText={formik.handleChange('password')}
             onBlur={formik.handleBlur('password')}
             value={formik.values.password}
@@ -197,7 +197,7 @@ const SignUp = ({ navigation, route }: Props) => {
         <FormControl>
           <FormInput
             placeholder="Confirm Password"
-            type="password"
+            secureTextEntry={true}
             onChangeText={formik.handleChange('confirmPassword')}
             onBlur={formik.handleBlur('confirmPassword')}
             value={formik.values.confirmPassword}
@@ -212,7 +212,7 @@ const SignUp = ({ navigation, route }: Props) => {
             placeholder="Ngày sinh"
             value={formik.values.dateOfBirth ? dayjs(formik.values.dateOfBirth).format('DD/MM/YYYY') : ''}
             onFocus={() => setOpenDatePicker(true)}
-            onChangeText={(value) => formik.setFieldValue('dateOfBirth', value)}
+            onChangeText={(value: any) => formik.setFieldValue('dateOfBirth', value)}
           />
           <Modal
             transparent={true}

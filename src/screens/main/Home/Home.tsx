@@ -8,7 +8,6 @@ import Slider from "../../../components/Common/slider";
 import Category from "../../../components/Main/Home/category";
 import { dispatch } from "../../../redux/store";
 import { getCategories } from "../../../redux/slices/category";
-import FlashSale from "../../../components/Main/Home/flashSalse";
 import { getFavorite, getProducts } from "../../../redux/slices/product";
 import ListCategories from "../../../components/Main/Home/listCategories";
 import Product from "../../../components/Main/Home/product";
@@ -18,9 +17,9 @@ type Props = {} & StackScreenProps<HomeStackParams, "Home">;
 
 const Home = ({ navigation }: Props) => {
   const data = [
-    { title: 'Slide 1', image: 'https://uniqlo-staging.vercel.app/assets/banner-3-D92opz_J.jpg' },
-    { title: 'Slide 2', image: 'https://uniqlo-staging.vercel.app/assets/banner-2-nlONFt-e.jpg' },
-    { title: 'Slide 3', image: 'https://uniqlo-staging.vercel.app/assets/banner-1-B0fCuvpl.jpg' },
+    { title: 'Slide 1', image: 'https://laginza.com/uploads/originals/2022/02/1363-uniqlo.jpg' },
+    { title: 'Slide 2', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjAKf6ma5PvX1t0Wc3nZW2yJPJNVGY9JCtMz8I1uM87IxuRtO-buP12hNNbvJGdxSGa60&usqp=CAU' },
+    { title: 'Slide 3', image: 'https://novelty.com.vn/public/uploads/images/570x733_12.jpg' },
   ];
   useEffect(() => {
     const fetchCategory = async () => {
@@ -36,7 +35,7 @@ const Home = ({ navigation }: Props) => {
       <ScrollView style={styles.scrollView}>
         <Slider data={data} />
         <ListCategories navigation={navigation} />
-        <FlashSale />
+        {/* <FlashSale /> */}
         <SurfVideos />
         <Category navigation={navigation} />
         <ProductFavorites />

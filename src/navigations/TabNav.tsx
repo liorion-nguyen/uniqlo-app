@@ -7,7 +7,7 @@ import { useTheme } from "native-base";
 import HomeStack from "./HomeStack";
 import { BottomTabsParams } from "./config";
 import Setting from "../screens/main/Setting/Setting";
-  import * as Notifications from "expo-notifications";
+import * as Notifications from "expo-notifications";
 import { useDispatch } from "react-redux";
 import Contact from "../screens/main/Contact/Contact";
 import BlogStack from "./BlogStack";
@@ -28,7 +28,7 @@ const TabNav = () => {
   const { colors } = useTheme();
 
   useEffect(() => {
-    const subcribe1 = Notifications.addNotificationReceivedListener((noti) => {
+    const subcribe1 = Notifications.addNotificationReceivedListener((noti: any) => {
       // Do something when recieved
     });
 
@@ -88,7 +88,7 @@ const TabNav = () => {
           title: "Blog",
           headerTitleStyle: { fontSize: 20 },
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-documents-outline" color={color} size={size} />
+            <Ionicons name="documents-outline" color={color} size={size} />
           ),
         }}
       />

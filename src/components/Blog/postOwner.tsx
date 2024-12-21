@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Avatar,
   Center,
   Column,
   Heading,
-  IStackProps,
   Icon,
   IconButton,
   Row,
