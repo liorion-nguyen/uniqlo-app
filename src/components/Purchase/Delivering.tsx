@@ -19,7 +19,7 @@ export default function Delivering() {
                 delivering.length > 0 ? (
                     <VStack>
                         <Text style={styles.deliveringText}>Delivering</Text>
-                        <ItemOrder data={delivering} />
+                        <ItemOrder data={delivering} status="Processing" />
                     </VStack>
                 ) : (
                     <NoOrders />

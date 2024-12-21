@@ -28,9 +28,6 @@ const PostOwner = ({ _stack, user, createdAt }: any) => {
           <Heading fontSize="lg" color="white">
             {user?.fullname}
           </Heading>
-          {/* {user.role === EUserRole.Doctor && (
-            <Icon as={Ionicons} name="checkmark-circle" color="primary.600" size="md" />
-          )} */}
         </Row>
         <Row space="2" alignItems="center">
           <Text color="coolGray.500">{moment(createdAt).format("DD MMM YYYY")}</Text>

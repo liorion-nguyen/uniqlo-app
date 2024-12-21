@@ -6,52 +6,49 @@ import { useEffect, useState } from "react";
 
 export default function FlashSale() {
     const startDate = new Date(Date.now() + 1000 * 60 * 60 * 24);
-    const [total, setTotal] = useState(0);
     const data = [
         {
             id: 1,
             name: "Áo thun",
-            price: 100000,
+            price: 100,
             discount: 22,
-            image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/422992/item/usgoods_57_422992_3x4.jpg?width=400",
-            totalSold: 100
+            image: "https://bizweb.dktcdn.net/thumb/1024x1024/100/399/392/products/6-2.png",
+            totalSold: 20
         },
         {
             id: 2,
-            name: "Áo thun",
-            price: 120000,
+            name: "Áo phông nam",
+            price: 120,
             discount: 22,
-            image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/422992/item/usgoods_57_422992_3x4.jpg?width=400",
+            image: "https://product.hstatic.net/200000201725/product/11_85a0e76afbc147d589df77f866acd4d8_master.jpg",
             totalSold: 60
         },
         {
             id: 3,
-            name: "Áo thun",
-            price: 219000,
+            name: "Quần jean nam",
+            price: 219,
             discount: 55,
-            image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/422992/item/usgoods_57_422992_3x4.jpg?width=400",
-            totalSold: 130
+            image: "https://vulcano.sgp1.digitaloceanspaces.com/media/18656/quan-jean-3008c-vulcano01.webp",
+            totalSold: 30
         },
         {
             id: 4,
-            name: "Áo thun",
-            price: 199000,
+            name: "Giày nam",
+            price: 199,
             discount: 10,
-            image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/422992/item/usgoods_57_422992_3x4.jpg?width=400",
-            totalSold: 200
+            image: "https://product.hstatic.net/1000357102/product/z3735124545145_2003fc45af6d9ea033e2a5fb7f275a7a_2a5ab74c6e7b4106a122cb863d76a783_master.jpg",
+            totalSold: 25
         },
         {
             id: 5,
             name: "Áo thun",
-            price: 123999,
+            price: 123,
             discount: 25,
             image: "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/422992/item/usgoods_57_422992_3x4.jpg?width=400",
-            totalSold: 189
+            totalSold: 90
         }
     ]
-    useEffect(() => {
-        setTotal(Math.round(data.reduce((acc, item) => acc + item.totalSold, 0)));
-    }, [data]);
+
     return (
         <View style={{ gap: 4 }}>
             <Box style={styles.titleBox}>
@@ -66,21 +63,22 @@ export default function FlashSale() {
                         }}
                     />
                 </Box>
-                <Box style={styles.viewAll}>
+                {/* <Box style={styles.viewAll}>
                     <Text style={styles.viewAllText}>Xem tất cả</Text>
                     <Icon as={MaterialIcons} name="arrow-right" size={8} color="coolGray.500" />
-                </Box>
+                </Box> */}
             </Box>
             <ScrollView horizontal style={styles.scrollView}>
                 {
                     data.map((item) => (
                         <Box key={item.id} style={styles.item}>
                             <Image source={{ uri: item.image }} style={styles.image} />
+                            <Text style={styles.name}>{item.name}</Text>
                             <Text style={styles.price}>{item.price.toLocaleString()} $</Text>
                             <Progress
-                                value={Math.round((item.totalSold / total) * 100)}
+                                value={item.totalSold}
                                 size="xs"
-                                colorScheme={Math.round((item.totalSold / total) * 100) > 20 ? "green" : "red"}
+                                colorScheme={item.totalSold > 20 ? "green" : "red"}
                                 borderRadius={8}
                                 style={{ width: "100%" }}
                             />
@@ -107,6 +105,11 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100
     },
+    name: {
+        fontSize: 14,
+        fontWeight: "500",
+        textAlign: "center"
+    },
     price: {
         fontSize: 14,
         fontWeight: "500",
@@ -117,7 +120,7 @@ const styles = StyleSheet.create({
         gap: 20
     },
     item: {
-        gap: 10,
+        // gap: 10,
         alignItems: "center",
         borderWidth: 1,
         borderColor: "grey",

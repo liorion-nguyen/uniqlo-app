@@ -19,7 +19,7 @@ export default function Cancel() {
                 cancel.length > 0 ? (
                     <VStack>
                         <Text style={styles.cancelText}>Cancelled</Text>
-                        <ItemOrder data={cancel} />
+                        <ItemOrder data={cancel} status="Cancelled" />
                     </VStack>
                 ) : (
                     <NoOrders />

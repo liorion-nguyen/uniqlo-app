@@ -99,6 +99,7 @@ export default function MenuBuy({ product }: { product: ProductType }) {
                                     }}
                                 />
                                 
+                                
                                 <RNPickerSelect
                                     placeholder={{
                                         label: "Select Color",
@@ -239,5 +240,9 @@ const styles = StyleSheet.create({
     iconContainer: {
         top: 10,
         right: 10,
+    },
+    dropdown: {
+        marginTop: 10,
+        width: "100%",
     },
 });

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Column, ScrollView } from "native-base";
 import { StackScreenProps } from "@react-navigation/stack";
 import { HomeStackParams } from "../../../navigations/config";
@@ -14,6 +14,7 @@ import Product from "../../../components/Main/Home/product";
 import SurfVideos from "../../../components/Main/Home/surfVideos";
 import ProductFavorites from "../../../components/Main/Home/productFavorites";
 import FlashSale from "../../../components/Main/Home/flashSalse";
+import SearchProducts from "../../../components/Main/Home/searchProducts";
 type Props = {} & StackScreenProps<HomeStackParams, "Home">;
 
 const Home = ({ navigation }: Props) => {
@@ -30,18 +31,21 @@ const Home = ({ navigation }: Props) => {
     };
     fetchCategory();
   }, []);
+  const [search, setSearch] = useState<string>('');
   return (
     <Column flex="1" bg="coolGray.700" safeAreaTop style={styles.container}>
-      <Header />
-      <ScrollView style={styles.scrollView}>
-        <Slider data={data} />
-        <ListCategories navigation={navigation} />
-        {/* <FlashSale /> */}
-        <SurfVideos />
-        <Category navigation={navigation} />
-        <ProductFavorites />
-        <Product />
-      </ScrollView>
+      <Header value={search} onChangeText={setSearch} />
+      {search.trim().length > 0 ? <SearchProducts search={search} /> :
+        <ScrollView style={styles.scrollView}>
+          <Slider data={data} />
+          <ListCategories navigation={navigation} />
+          <FlashSale />
+          <SurfVideos />
+          <Category navigation={navigation} />
+          <ProductFavorites />
+          <Product />
+        </ScrollView>
+      }
     </Column>
   );
 };

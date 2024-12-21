@@ -49,12 +49,12 @@ const PostDetail = ({ navigation, route }: any) => {
           p="0"
           icon={<Icon size="xl" as={Ionicons} name="chevron-back" color="white" />}
         />
-         <PostOwner user={{avatar: "", fullname: post.author}} createdAt={post.createdAt} _stack={{ flex: "1" }}/>
+        <PostOwner user={{ avatar: "", fullname: post.author }} createdAt={post.createdAt} _stack={{ flex: "1" }} />
       </Row>
       <Divider bg="coolGray.300" style={{ height: 0.3 }} />
       <ScrollView flex="1" px="4">
         <Column mt="4">
-        <Text color="white" mb="4" fontSize="lg" fontWeight="bold">
+          <Text color="white" mb="4" fontSize="lg" fontWeight="bold">
             {post.title}
           </Text>
           <Text color="white" mb="4">
@@ -77,26 +77,26 @@ const PostDetail = ({ navigation, route }: any) => {
         <Divider my="4" bg="coolGray.300" />
         <Column>
           {post.comments.map((comment: CommentType) => (
-           <Row w="100%" space="3" mb="4">
-           {comment.avatar ? (
-             <Avatar size="md" source={{ uri: comment.avatar }} />
-           ) : (
-             <Center bg="white" rounded="full" w="12" h="12">
-               <Ionicons name="person-outline" color="gray" size={30} />
-             </Center>
-           )}
-           <Column flex="1">
-             <Column p="3" bg="coolGray.500" rounded="2xl" space="1">
-               <Row justifyContent="space-between">
-                 <Heading fontSize="md" color="white">
-                   {comment.name}
-                 </Heading>
-                 <Text color="coolGray.300">{moment(comment.createdAt).format("DD-MM-YYYY")}</Text>
-               </Row>
-               <Text color="white">{comment.comment}</Text>
-             </Column>
-           </Column>
-         </Row>
+            <Row w="100%" space="3" mb="4">
+              {comment.avatar ? (
+                <Avatar size="md" source={{ uri: comment.avatar }} />
+              ) : (
+                <Center bg="white" rounded="full" w="12" h="12">
+                  <Ionicons name="person-outline" color="gray" size={30} />
+                </Center>
+              )}
+              <Column flex="1">
+                <Column p="3" bg="coolGray.500" rounded="2xl" space="1">
+                  <Row justifyContent="space-between">
+                    <Heading fontSize="md" color="white">
+                      {comment.name}
+                    </Heading>
+                    <Text color="coolGray.300">{moment(comment.createdAt).format("DD-MM-YYYY")}</Text>
+                  </Row>
+                  <Text color="white">{comment.comment}</Text>
+                </Column>
+              </Column>
+            </Row>
           ))}
         </Column>
       </ScrollView>

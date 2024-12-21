@@ -8,7 +8,6 @@ import HomeStack from "./HomeStack";
 import { BottomTabsParams } from "./config";
 import Setting from "../screens/main/Setting/Setting";
 import * as Notifications from "expo-notifications";
-import { useDispatch } from "react-redux";
 import Contact from "../screens/main/Contact/Contact";
 import BlogStack from "./BlogStack";
 

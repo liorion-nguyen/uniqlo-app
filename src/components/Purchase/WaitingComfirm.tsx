@@ -20,7 +20,7 @@ export default function WaitingComfirm() {
                 waitingConfirm.length > 0 ? (
                     <VStack>
                         <Text style={styles.waitingComfirmText}>Waiting Confirm</Text>
-                        <ItemOrder data={waitingConfirm} />
+                        <ItemOrder data={waitingConfirm} status="Pending" />
                     </VStack>
                 ) : (
                     <NoOrders />

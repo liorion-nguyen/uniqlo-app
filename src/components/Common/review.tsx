@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Box, VStack, HStack, Text, Avatar, Divider, Button, Input, Select, CheckIcon, Menu, Pressable, ThreeDotsIcon } from 'native-base';
+import { Box, VStack, HStack, Text, Avatar, Divider, Button, Input, Select, CheckIcon, Menu, Pressable, ThreeDotsIcon, FormControl } from 'native-base';
 import { Rating } from 'react-native-ratings';
 import { ReviewType } from '../../types/redux/product';
 import { createReviewProduct, deleteReviewProduct } from '../../redux/slices/product';
 import { dispatch } from '../../redux/store';
+import { TextInput } from 'react-native';
+import FormInput from '../Form/FormInput';
 
 const CustomerReview = ({ data, id }: { data: ReviewType[]; id: string }) => {
     const [rating, setRating] = useState(0);
@@ -165,11 +167,9 @@ const CustomerReview = ({ data, id }: { data: ReviewType[]; id: string }) => {
                     />
                     <Text>{handleRatingLabel(rating)}</Text>
                 </HStack>
-                <Input
-                    placeholder={'Write Review'}
-                    value={review}
-                    onChangeText={(text: string) => setReview(text)}
-                />
+                <FormControl>
+                    <FormInput label="Enter your review" value={review} onChangeText={setReview} />
+                </FormControl>
                 <Button
                     colorScheme="primary"
                     isDisabled={!review || rating === 0}

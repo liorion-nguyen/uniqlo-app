@@ -120,4 +120,33 @@ export const createOrder = (order: OrderType) => {
     };
 };
 
+export const updateStatusOrder = (id: string, status: string) => {
+    return async (dispatch: any) => {
+        try {
+            dispatch(orderSlice.actions.getOrderRequest());
+            const result: AxiosResponse<OrderType> = await axios.put(
+                `${envConfig.serverURL}/orders/${id}/status`,{ status }
+            );
+            if (result.data) {
+                dispatch(orderSlice.actions.getOrderSuccess(result.data));
+                toast.show({
+                    text1: 'Order updated successfully',
+                    type: 'success',
+                });
+                dispatch(getOrders());
+            } else {
+                throw new Error('Invalid response format from server');
+            }
+        } catch (error: any) {
+            const errorMessage =
+                error.response?.data?.message || error.message || 'Something went wrong';
+            toast.show({
+                text1: errorMessage,
+                type: 'error',
+            });
+            dispatch(orderSlice.actions.getOrderFailure(errorMessage));
+        }
+    }
+}
+
 export const orderReducer = orderSlice.reducer;

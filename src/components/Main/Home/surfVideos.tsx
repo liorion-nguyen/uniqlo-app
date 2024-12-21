@@ -14,15 +14,15 @@ export default function SurfVideos() {
         },
         {
             id: 2,
-            title: "Quần áo thể thao ống siêu rộng, siêu đẹp với chất thun co giãn.",
-            video: "https://v.made-in-china.com/ucv/sbr/f98bd3e93a7eab93a1506bed5fdc40/7a90a1ff0610247769155357187441_h264_def.mp4",
-            view: 78
+            title: "Áo quần thể dục thể dục.",
+            video: "https://v.made-in-china.com/ucv/sbr/de7c188a2b35ba5013e5a42b2f5929/b900c460c410181551722689252265_h264_def.mp4",
+            view: 100
         },
         {
             id: 3,
-            title: "Quần áo thể thao",
-            video: "https://v.made-in-china.com/ucv/sbr/f98bd3e93a7eab93a1506bed5fdc40/7a90a1ff0610247769155357187441_h264_def.mp4",
-            view: 78
+            title: "HEATTECH Cashmere Blend T-Shirt | Extra Warm | Turtleneck",
+            video: "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/471601/subvideo/goods_471601_sub14_video_3x4.mp4?resolution=598",
+            view: 95
         },
         {
             id: 4,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         lineHeight: 16,
         maxHeight: 36,
         overflow: 'hidden',
-        textOverflow: 'ellipsis',
+        // textOverflow: 'ellipsis',
         padding: 2
     },
     scrollView: {

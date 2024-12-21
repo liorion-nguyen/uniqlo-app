@@ -3,7 +3,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Header() {
+export default function Header({ value, onChangeText }: { value: string, onChangeText: (text: string) => void }) {
   const navigation = useNavigation(); 
   const { colors } = useTheme();
   return (
@@ -22,6 +22,8 @@ export default function Header() {
             <Icon as={<MaterialIcons name="camera-enhance" />} size={5} mr="2" color="muted.400" />
           }
           placeholder="Search"
+          value={value}
+          onChangeText={onChangeText}
         />
         <Icon as={<MaterialIcons name="shopping-cart" />} size={5} ml="2" color="muted.400" onPress={() => navigation.navigate('Cart' as never)}/>
         <Icon as={<MaterialIcons name="messenger" />} size={5} ml="2" color="muted.400" onPress={() => navigation.navigate('Message' as never)}/>

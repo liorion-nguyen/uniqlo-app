@@ -19,7 +19,7 @@ export default function Delivered() {
                 delivered.length > 0 ? (
                     <VStack>
                         <Text style={styles.deliveredText}>Delivered</Text>
-                        <ItemOrder data={delivered} />
+                        <ItemOrder data={delivered} status="Completed" />
                     </VStack>
                 ) : (
                     <NoOrders />

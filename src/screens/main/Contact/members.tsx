@@ -41,9 +41,9 @@ const Members = ({ data }: { data: any }) => {
 };
 
 const styles = StyleSheet.create({
-    wrapper: { height: 250 }, // Chiều cao của slider
-    slide: { justifyContent: 'center', alignItems: 'center', height: 250 },
-    image: { width: Dimensions.get('window').width - 40, height: 200, borderRadius: 10 },
+    wrapper: { height: 350, alignItems: "flex-start" }, // Chiều cao của slider
+    slide: { justifyContent: 'center', alignItems: 'center', height: 350 },
+    image: { width: Dimensions.get('window').width - 40, height: 250, borderRadius: 10 },
 });
 
 export default Members;

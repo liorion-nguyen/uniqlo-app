@@ -29,6 +29,7 @@ interface Location {
 const Payment = ({ route }: any) => {
     const navigation = useNavigation(); 
     const { product, quantity, size, color } = route.params;
+    
     const userDetail = useSelector((state: RootState) => state.user.user);
     const [address, setAddress] = useState(userDetail?.address);
     const [phone, setPhone] = useState(`${userDetail?.phone.country} ${userDetail?.phone.number}`);

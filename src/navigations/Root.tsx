@@ -31,7 +31,6 @@ const Root = () => {
           },
           headerTintColor: "white",
           headerTitleStyle: { fontSize: 20 },
-          headerBackTitleVisible: false,
         }}
       >
         {!user && <Stack.Screen name="Auth" component={AuthStack} />}
@@ -49,7 +48,6 @@ const Root = () => {
           component={ChangePassword}
           options={{
             headerShown: true,
-            headerBackTitleVisible: false,
             title: "Change password",
           }}
         />
@@ -57,7 +55,6 @@ const Root = () => {
         <Stack.Screen name="Purchase" component={Purchase} 
           options={{
             headerShown: true,
-            headerBackTitleVisible: false,
           }}
         />
       </Stack.Navigator>

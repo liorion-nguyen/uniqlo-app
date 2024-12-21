@@ -1,8 +1,12 @@
-import { HStack, Image, Text, ScrollView } from "native-base";
+import { HStack, Image, Text, ScrollView, Button } from "native-base";
 import { VStack } from "native-base";
-import { StyleSheet } from "react-native";
+import { Alert, StyleSheet } from "react-native";
+import { updateStatusOrder } from "../../redux/slices/order";
+import { dispatch } from "../../redux/store";
+import { useNavigation } from "@react-navigation/native";
 
-export default function ItemOrder({ data }: any) {
+export default function ItemOrder({ data, status }: any) {
+    const navigation = useNavigation<any>();
     const formatDate = (date: string) => {
         const dateObj = new Date(date);
         return dateObj.toLocaleDateString("vi-VN", {
@@ -11,6 +15,50 @@ export default function ItemOrder({ data }: any) {
             year: "numeric",
         });
     }
+    const handleButtonOrder = (id: string, productId: string) => {
+        if (status == "Cancelled") {
+            navigation.navigate("TabNav", {
+                screen: "HomeStack",
+                params: {
+                  screen: "ProductDetail",
+                  params: {
+                    productId,
+                  },
+                },
+              });
+        }
+        if (status == "Completed") {
+            navigation.navigate("TabNav", {
+                screen: "HomeStack",
+                params: {
+                  screen: "ProductDetail",
+                  params: {
+                    productId,
+                  },
+                },
+              });
+        }
+        if (status == "Pending") {
+            Alert.alert(
+                "Xác nhận huỷ đơn hàng",
+                "Bạn có chắc chắn muốn huỷ đơn hàng này?",
+                [
+                    {
+                        text: "Không",
+                        onPress: () => console.log("Huỷ bỏ huỷ đơn hàng"),
+                        style: "cancel",
+                    },
+                    {
+                        text: "Có",
+                        onPress: () => {
+                            dispatch(updateStatusOrder(id, "Cancelled"));
+                        },
+                    },
+                ],
+                { cancelable: false }
+            );
+        }
+    };
     return (
         <ScrollView>
             {
@@ -20,19 +68,19 @@ export default function ItemOrder({ data }: any) {
                         {
                             item.orderItems.map((orderItem: any) => (
                                 <HStack key={orderItem.id} style={styles.itemContainer} space={3}>
-                                    <Image 
-                                        source={{ 
-                                            uri: orderItem.Product_images[0] || "https://www.uniqlo.com/jp/ja/contents/feature/masterpiece/common/img/product/relatedProduct/relatedProduct_26_01.jpg?240112" 
-                                        }} 
-                                        alt="product" 
-                                        style={styles.productImage} 
+                                    <Image
+                                        source={{
+                                            uri: orderItem.Product_images[0] || "https://www.uniqlo.com/jp/ja/contents/feature/masterpiece/common/img/product/relatedProduct/relatedProduct_26_01.jpg?240112"
+                                        }}
+                                        alt="product"
+                                        style={styles.productImage}
                                     />
                                     <VStack style={styles.itemDetailsContainer}>
                                         <HStack>
                                             <Text style={styles.itemOrderText}>Product Name: </Text>
-                                            <Text 
-                                                style={styles.itemOrderValue} 
-                                                numberOfLines={1} 
+                                            <Text
+                                                style={styles.itemOrderValue}
+                                                numberOfLines={1}
                                             >
                                                 {orderItem.Product_name || "Không xác định"}
                                             </Text>
@@ -49,7 +97,16 @@ export default function ItemOrder({ data }: any) {
                                 </HStack>
                             ))
                         }
-                        <Text style={styles.totalAmount}>Total: {item.finalAmount} $</Text>
+                        <HStack justifyContent="space-between">
+                            {
+                                status !== "Processing" && (
+                                    <Button onPress={() => handleButtonOrder(item.id, item.orderItems[0].id)}>
+                                        {status == "Cancelled" ? "Buy Again" : (status === "Completed" ? "Review Product" : (status === "Processing" ? "Cancel Order" : "Cancel"))}
+                                    </Button>
+                                )
+                            }
+                            <Text style={styles.totalAmount}>Total: {item.finalAmount} $</Text>
+                        </HStack>
                     </VStack>
                 ))
             }
