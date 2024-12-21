@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "app2",
+    "name": "Uniqlo",
     "slug": "app2",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,10 +19,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.liorion.app2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b6218388-6b06-428d-ad9b-fb002aa1e588"
+      }
     }
   }
 }

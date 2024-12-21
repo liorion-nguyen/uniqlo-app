@@ -51,7 +51,7 @@ const Contact = () => {
         </Text>
       </Box>
 
-      <MapView
+      {/* <MapView
         style={{ width: '100%', height: 300 }}
         initialRegion={{
           latitude: 21.028511,
@@ -65,7 +65,7 @@ const Contact = () => {
           title="Uniqlo"
           description="Uniqlo clothing store"
         />
-      </MapView>
+      </MapView> */}
 
       <VStack space={4} p={4}>
         <Box bg="white" shadow={2} borderRadius="lg" p={4}>
