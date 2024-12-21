@@ -1,0 +1,47 @@
+name: iOS Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check if iOS folder exists
+        run: |
+          if [ ! -d "ios" ]; then
+            echo "iOS folder not found. Initializing iOS project..."
+            npx react-native eject
+            cd ios
+            pod install
+          else
+            cd ios
+            pod install
+          fi
+
+      - name: Build iOS App
+        run: |
+          xcodebuild -workspace ios/MyApp.xcworkspace \
+                     -scheme MyApp \
+                     -sdk iphoneos \
+                     -configuration Release \
+                     archive -archivePath ${{github.workspace}}/build/MyApp.xcarchive
+
+      - name: Export .ipa
+        run: |
+          xcodebuild -exportArchive \
+                     -archivePath ${{github.workspace}}/build/MyApp.xcarchive \
+                     -exportOptionsPlist ios/exportOptions.plist \
+                     -exportPath ${{github.workspace}}/build
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: iOS-App
+          path: build/*.ipa
