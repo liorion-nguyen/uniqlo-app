@@ -12,10 +12,13 @@ import {
 } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+import { dispatch, RootState } from '../../../redux/store';
 import toast from 'react-native-toast-message';
 import ListVoucher from '../../../components/Blog/listVoucher';
 import { getDistance } from 'geolib';
+import { OrderType } from '../../../types/redux/order';
+import { createOrder } from '../../../redux/slices/order';
+import { useNavigation } from '@react-navigation/native';
 
 interface Location {
     id: string;
@@ -24,6 +27,7 @@ interface Location {
     longitude?  : number;
 }
 const Payment = ({ route }: any) => {
+    const navigation = useNavigation(); 
     const { product, quantity, size, color } = route.params;
     const userDetail = useSelector((state: RootState) => state.user.user);
     const [address, setAddress] = useState(userDetail?.address);
@@ -80,6 +84,21 @@ const Payment = ({ route }: any) => {
             cost = 13000 + (distanceInKm - 5) * 100; 
         }
         return Math.floor(cost * 0.001);
+    };
+    const handleCreateOrder = async () => {  
+        const order: OrderType = {  
+            orderItems: [{
+                productId: product._id,
+                count: quantity,
+                size: size,
+                color: color,
+                totalPrice: product.Product_price * quantity,
+            }],
+            shippingFee: shippingCost,
+            discountId: selectedDiscount?._id,
+        };
+        await dispatch(createOrder(order));
+        navigation.goBack();
     };
     return (
         <Box flex={1} bg="gray.100" safeAreaTop>
@@ -206,6 +225,7 @@ const Payment = ({ route }: any) => {
                     size="lg"
                     borderRadius="md"
                     _text={{ fontWeight: 'bold', fontSize: 'lg' }}
+                    onPress={handleCreateOrder}
                 >
                     Đặt hàng
                 </Button>

@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, TextInput } from "react-native";
 import React from "react";
 import { Box, Column, FormControl, IInputProps, IStackProps, Input } from "native-base";
 
@@ -19,7 +19,7 @@ const FormInput = ({ label, _stack, shadow = "8", ...inputProps }: Props) => {
         </FormControl.Label>
       )}
       <Box bg="transparent" rounded="full" shadow={shadow}>
-        <Input
+        {/* <Input
           size="md"
           bg="primary.200"
           borderColor="primary.200"
@@ -29,7 +29,21 @@ const FormInput = ({ label, _stack, shadow = "8", ...inputProps }: Props) => {
           py={isIOS ? "3" : "2"}
           color="white"
           {...inputProps}
+        /> */}
+        <TextInput
+          placeholder={label || inputProps.placeholder}
+          placeholderTextColor="#ffffff"
+          style={[
+            styles.input,
+            { paddingVertical: isIOS ? 12 : 8 }, 
+          ]}
+          onChangeText={inputProps.onChangeText}
+          value={inputProps.value}
+          secureTextEntry={inputProps.type === "password"}
+          keyboardType={inputProps.keyboardType}
+          onBlur={inputProps.onBlur}
         />
+
       </Box>
     </Column>
   );
@@ -37,4 +51,14 @@ const FormInput = ({ label, _stack, shadow = "8", ...inputProps }: Props) => {
 
 export default FormInput;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  input: {
+    backgroundColor: "#EB7575",
+    borderColor: "#EB7575",
+    borderWidth: 1,
+    borderRadius: 50,
+    color: "white",
+    paddingHorizontal: 16,
+    fontSize: 14,
+  },
+});

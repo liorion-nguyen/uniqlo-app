@@ -188,6 +188,7 @@ const SignUp = ({ navigation, route }: Props) => {
             onChangeText={formik.handleChange('password')}
             onBlur={formik.handleBlur('password')}
             value={formik.values.password}
+            type="password"
           />
         </FormControl>
         {formik.touched.password && formik.errors.password && (
@@ -201,6 +202,7 @@ const SignUp = ({ navigation, route }: Props) => {
             onChangeText={formik.handleChange('confirmPassword')}
             onBlur={formik.handleBlur('confirmPassword')}
             value={formik.values.confirmPassword}
+            type="password"
           />
         </FormControl>
         {formik.touched.confirmPassword && formik.errors.confirmPassword && (

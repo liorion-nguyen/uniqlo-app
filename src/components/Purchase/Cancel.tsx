@@ -1,26 +1,25 @@
+import { Text, VStack } from "native-base";
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import NoOrders from "../Common/noOrders";
+import { OrderType } from "../../types/redux/order";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { OrderType } from "../../types/redux/order";
 import ItemOrder from "./ItemOrder";
-import { VStack } from "native-base";
 
-export default function WaitingComfirm() {
-    const [waitingConfirm, setWaitingConfirm] = useState<OrderType[]>([]);
+export default function Cancel() {
+    const [cancel, setCancel] = useState<OrderType[]>([]);
     const orders = useSelector((state: RootState) => state.orders.orders);
     useEffect(() => {
-        setWaitingConfirm(orders.filter((order: OrderType) => order.status == "Pending"));
+        setCancel(orders.filter((order: OrderType) => order.status == "Cancelled"));
     }, [orders]);
-
     return (
         <View>
             {
-                waitingConfirm.length > 0 ? (
+                cancel.length > 0 ? (
                     <VStack>
-                        <Text style={styles.waitingComfirmText}>Waiting Confirm</Text>
-                        <ItemOrder data={waitingConfirm} />
+                        <Text style={styles.cancelText}>Cancelled</Text>
+                        <ItemOrder data={cancel} />
                     </VStack>
                 ) : (
                     <NoOrders />
@@ -30,7 +29,7 @@ export default function WaitingComfirm() {
 }
 
 const styles = StyleSheet.create({
-    waitingComfirmText: {
+    cancelText: {
         fontSize: 20,
         fontWeight: "bold",
     },

@@ -50,7 +50,7 @@ export default function FlashSale() {
         }
     ]
     useEffect(() => {
-        setTotal(data.reduce((acc, item) => acc + item.totalSold, 0));
+        setTotal(Math.round(data.reduce((acc, item) => acc + item.totalSold, 0)));
     }, [data]);
     return (
         <View style={{ gap: 4 }}>
@@ -78,13 +78,12 @@ export default function FlashSale() {
                             <Image source={{ uri: item.image }} style={styles.image} />
                             <Text style={styles.price}>{item.price.toLocaleString()} $</Text>
                             <Progress
-                                value={Math.round((item.totalSold / total) * 100)} // Làm tròn tỷ lệ phần trăm
+                                value={Math.round((item.totalSold / total) * 100)}
                                 size="xs"
-                                colorScheme={item.totalSold / total * 100 > 20 ? "green" : "red"}
+                                colorScheme={Math.round((item.totalSold / total) * 100) > 20 ? "green" : "red"}
                                 borderRadius={8}
                                 style={{ width: "100%" }}
                             />
-
                         </Box>
                     ))
                 }

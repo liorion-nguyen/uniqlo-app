@@ -8,7 +8,6 @@ import { dispatch } from '../../redux/store';
 const CustomerReview = ({ data, id }: { data: ReviewType[]; id: string }) => {
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState('');
-
     const calculateAverageRating = (reviews: { rating: number }[]) => {
         if (reviews.length === 0) return 0;
         const total = reviews.reduce((acc, review) => acc + review.rating, 0);

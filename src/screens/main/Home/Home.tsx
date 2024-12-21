@@ -13,6 +13,7 @@ import ListCategories from "../../../components/Main/Home/listCategories";
 import Product from "../../../components/Main/Home/product";
 import SurfVideos from "../../../components/Main/Home/surfVideos";
 import ProductFavorites from "../../../components/Main/Home/productFavorites";
+import FlashSale from "../../../components/Main/Home/flashSalse";
 type Props = {} & StackScreenProps<HomeStackParams, "Home">;
 
 const Home = ({ navigation }: Props) => {

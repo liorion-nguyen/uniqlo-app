@@ -51,13 +51,14 @@ export default function MenuBuy({ product }: { product: ProductType }) {
         navigation.navigate("Payment", { product: product, quantity: quantity, size: size, color: color });
         setShowModal(false); 
     };
+    console.log(product.Product_color);
 
     return (
         <Box style={styles.container}>
             {/* Nút "Chat ngay" */}
             <TouchableOpacity style={styles.item}>
                 <Icon as={MaterialIcons} name="question-answer" size={6} color="red.500" />
-                <Text style={styles.text}>Chat ngay</Text>
+                <Text style={styles.text}>Chat now</Text>
             </TouchableOpacity>
 
             <View style={styles.line}></View>
@@ -65,12 +66,12 @@ export default function MenuBuy({ product }: { product: ProductType }) {
             {/* Nút "Thêm vào giỏ hàng" */}
             <TouchableOpacity style={styles.item} onPress={() => handleOpenModal('cart')}>
                 <Icon as={MaterialIcons} name="add-shopping-cart" size={6} color="red.500" />
-                <Text style={styles.text}>Thêm vào giỏ hàng</Text>
+                <Text style={styles.text}>Add to cart</Text>
             </TouchableOpacity>
 
             {/* Nút "Mua ngay" */}
             <TouchableOpacity style={styles.buy} onPress={() => handleOpenModal('buy')}>
-                <Text style={styles.buyText}>Mua ngay</Text>
+                <Text style={styles.buyText}>Buy now</Text>
                 <Text style={styles.buyPrice}>{(product.Product_price * quantity).toLocaleString()} $</Text>
             </TouchableOpacity>
 
@@ -80,10 +81,10 @@ export default function MenuBuy({ product }: { product: ProductType }) {
                     <Box style={styles.modalContent}>
                         <ScrollView>
                             <VStack space={4}>
-                                <Text style={styles.modalTitle}>Chọn thông tin sản phẩm</Text>
+                                <Text style={styles.modalTitle}>Select product information</Text>
                                 <RNPickerSelect
                                     placeholder={{
-                                        label: "Chọn size",
+                                        label: "Select Size",
                                         value: null,
                                     }}
                                     onValueChange={(value) => setSize(value)}
@@ -100,7 +101,7 @@ export default function MenuBuy({ product }: { product: ProductType }) {
                                 
                                 <RNPickerSelect
                                     placeholder={{
-                                        label: "Chọn màu",
+                                        label: "Select Color",
                                         value: null,
                                     }}
                                     onValueChange={(value) => setColor(value)}
@@ -117,7 +118,7 @@ export default function MenuBuy({ product }: { product: ProductType }) {
 
                                 {/* Chọn số lượng */}
                                 <HStack alignItems="center" justifyContent="space-between">
-                                    <Text>Số lượng:</Text>
+                                    <Text>Quantity:</Text>
                                     <HStack alignItems="center" justifyContent="space-between">
                                         <TouchableOpacity
                                             onPress={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
@@ -137,12 +138,12 @@ export default function MenuBuy({ product }: { product: ProductType }) {
 
                                 {/* Nút xác nhận */}
                                 <Button mt={4} colorScheme="red" onPress={handleConfirm}>
-                                    Xác nhận
+                                    Confirm
                                 </Button>
 
                                 {/* Nút hủy */}
                                 <Button mt={2} variant="ghost" onPress={() => setShowModal(false)}>
-                                    Hủy
+                                    Cancel
                                 </Button>
                             </VStack>
                         </ScrollView>

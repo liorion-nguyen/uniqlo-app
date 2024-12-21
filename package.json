@@ -36,7 +36,7 @@
     "react-native": "^0.76.5",
     "react-native-dotenv": "^3.4.11",
     "react-native-gesture-handler": "~2.20.2",
-    "react-native-maps": "1.18.0",
+    "react-native-maps": "^1.18.0",
     "react-native-modal-datetime-picker": "^18.0.0",
     "react-native-otp-entry": "^1.8.1",
     "react-native-phone-number-input": "^2.1.0",

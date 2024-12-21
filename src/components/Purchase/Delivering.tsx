@@ -1,17 +1,26 @@
-import { Text } from "native-base";
-import { useState } from "react";
+import { Text, VStack } from "native-base";
+import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import NoOrders from "../Common/noOrders";
+import { OrderType } from "../../types/redux/order";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import ItemOrder from "./ItemOrder";
 
 export default function Delivering() {
-    const [waitingConfirm, setWaitingConfirm] = useState([]);
+    const [delivering, setDelivering] = useState<OrderType[]>([]);
+    const orders = useSelector((state: RootState) => state.orders.orders);
+    useEffect(() => {
+        setDelivering(orders.filter((order: OrderType) => order.status == "Processing"));
+    }, [orders]);
     return (
         <View>
             {
-                waitingConfirm.length > 0 ? (
-                    <View>
+                delivering.length > 0 ? (
+                    <VStack>
                         <Text style={styles.deliveringText}>Delivering</Text>
-                    </View>
+                        <ItemOrder data={delivering} />
+                    </VStack>
                 ) : (
                     <NoOrders />
                 )}

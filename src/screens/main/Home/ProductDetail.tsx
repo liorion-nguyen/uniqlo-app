@@ -13,7 +13,7 @@ import Slider from "../../../components/Common/slider";
 import RenderHTML from "react-native-render-html";
 
 export default function ProductDetail({ route }: { route: any }) {
-    const { productId } = route.params;
+    const { productId } = route.params;    
     const { product } = useSelector((state: RootState) => state.products);
     const { products } = useSelector((state: RootState) => state.products);
     const user = useSelector((state: RootState) => state.user.user);
@@ -130,7 +130,7 @@ export default function ProductDetail({ route }: { route: any }) {
                     <Text style={styles.productSpecifications}>{product.Product_specifications}</Text>
                 </Box>
 
-                <CustomerReview data={product?.reviews} id={product?.id} />
+                <CustomerReview data={product?.reviews} id={productId} />
                 <Box style={{ padding: 10, gap: 10 }}>
                     <Box style={styles.title}>
                         <View style={styles.line}></View>

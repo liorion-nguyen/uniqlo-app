@@ -61,23 +61,23 @@ const Setting = ({ navigation }: Props) => {
   const purchases = [
     {
       id: 1,
-      title: "Chờ xác nhận",
+      title: "Waiting Confirm",
       icon: "hourglass-top",
     },
     {
       id: 2,
-      title: "Đang giao",
+      title: "Delivering",
       icon: "local-shipping",
     },
     {
       id: 3,
-      title: "Chờ giao hàng",
-      icon: "hourglass-bottom",
+      title: "Delivered",
+      icon: "star",
     },
     {
       id: 4,
-      title: "Đánh giá",
-      icon: "star",
+      title: "Cancelled",
+      icon: "close",
     },
   ]
   return (
@@ -115,7 +115,7 @@ const Setting = ({ navigation }: Props) => {
             <View style={styles.purchaseTitleRow}>
               <Text style={styles.purchaseTitle}>Đơn mua</Text>
               <Button
-                shadow={5}
+                // shadow={5}
                 rightIcon={<Icon as={<MaterialIcons name="keyboard-arrow-right" />} size={5} color="primary.600" />}
                 _text={{ color: "white", py: "0.5", fontWeight: "medium" }}
                 onPress={() => navigation.navigate("Purchase", { purchase: purchases[1] })}
