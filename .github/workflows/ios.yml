@@ -13,10 +13,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Check if iOS folder exists
         run: |
-          cd ios
-          pod install
+          if [ ! -d "ios" ]; then
+            echo "iOS folder not found. Initializing iOS project..."
+            npx react-native eject
+            cd ios
+            pod install
+          else
+            cd ios
+            pod install
+          fi
 
       - name: Build iOS App
         run: |
