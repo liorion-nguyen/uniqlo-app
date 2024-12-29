@@ -51,7 +51,7 @@ const Contact = () => {
         </Text>
       </Box>
 
-      {/* <MapView
+      <MapView
         style={{ width: '100%', height: 300 }}
         initialRegion={{
           latitude: 21.028511,
@@ -65,12 +65,12 @@ const Contact = () => {
           title="Uniqlo"
           description="Uniqlo clothing store"
         />
-      </MapView> */}
+      </MapView>
 
       <VStack space={4} p={4}>
         <Box bg="white" shadow={2} borderRadius="lg" p={4}>
           <Image
-            source={require('../../../../assets/about/hotels.jpg')}
+            source={{ uri: "https://www.elleman.vn/wp-content/uploads/2018/10/15/elle-man-viet-nam-thuong-hieu-thoi-trang-uniqlo-quyet-tam-chinh-phuc-dong-nam-a7.jpg" }}
             alt="Our Hotels"
             height={200}
             resizeMode="cover"
@@ -90,7 +90,7 @@ const Contact = () => {
         {/* Section: Tours */}
         <Box bg="white" shadow={2} borderRadius="lg" p={4}>
           <Image
-            source={require('../../../../assets/about/tours.jpeg')}
+            source={{ uri: "https://www.elleman.vn/wp-content/uploads/2018/10/15/elle-man-viet-nam-thuong-hieu-thoi-trang-uniqlo-quyet-tam-chinh-phuc-dong-nam-a4.jpg" }}
             alt="Our Tours"
             height={200}
             resizeMode="cover"

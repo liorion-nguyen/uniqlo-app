@@ -29,7 +29,7 @@ export default function Category({ route, navigation }: { route: any, navigation
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true); 
+            setLoading(true);
             await dispatch(getCategory(categoryId));
             setLoading(false);
         };
@@ -52,12 +52,18 @@ export default function Category({ route, navigation }: { route: any, navigation
             bg="white"
         >
             <HStack space={3} alignItems="center">
-                <Image
-                    source={{ uri: item.image }}
-                    alt={item.name}
-                    size="lg"
-                    borderRadius="md"
-                />
+                {
+                    item.image ? <Image
+                        source={{ uri: item.image }}
+                        size="lg"
+                        borderRadius="md"
+                    /> : <Image
+                        source={{ uri: "https://cdn-icons-png.flaticon.com/128/2681/2681760.png" }}
+                        size="lg"
+                        borderRadius="md"
+                    />
+                }
+
                 <VStack flex={1}>
                     <Heading size="sm">{item.name}</Heading>
                     <Text color="gray.500" mt={1}>

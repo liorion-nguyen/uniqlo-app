@@ -9,7 +9,7 @@ export default function Product() {
         products.length > 0 ? (
             <View style={{ gap: 4 }}>
                 <Box>
-                    <Text fontSize="lg" fontWeight="bold">Gợi ý cho bạn</Text>
+                    <Text fontSize="lg" fontWeight="bold">Suggestions for you</Text>
                 </Box>
                 <RecommendedProducts productsProps={products} />
             </View>

@@ -109,7 +109,7 @@ const Payment = ({ route }: any) => {
                     <HStack justifyContent="space-between" alignItems="center">
                         <VStack>
                             <Text bold fontSize="md">
-                                Địa chỉ nhận hàng
+                                Address
                             </Text>
                             {address && (
                                 <Text color="gray.500">{address?.ward}, {address?.district}, {address?.province}</Text>
@@ -123,7 +123,7 @@ const Payment = ({ route }: any) => {
                 {/* Thông tin sản phẩm */}
                 <Box bg="white" p={4} mb={3}>
                     <Text bold fontSize="md" mb={2}>
-                        Thông tin sản phẩm
+                        Product information
                     </Text>
                     <HStack space={4} alignItems="center">
                         <Image
@@ -135,15 +135,15 @@ const Payment = ({ route }: any) => {
                         <VStack flex={1}>
                             <Text bold>{product.Product_name}</Text>
                             <Text color="gray.500" fontSize="sm">
-                                Số lượng: {quantity}
+                                Quantity: {quantity}
                             </Text>
                             <HStack space={2}>
                                 <Text color="gray.500" fontSize="sm">
-                                    Kích cỡ: {size}
+                                    Size: {size}
                                 </Text>
                                 <Divider orientation="vertical" />
                                 <Text color="gray.500" fontSize="sm">
-                                    Màu sắc: {color}
+                                    Color: {color}
                                 </Text>
                             </HStack>
                             <Text color="red.500" bold>
@@ -158,9 +158,9 @@ const Payment = ({ route }: any) => {
                     <HStack justifyContent="space-between" alignItems="center">
                         <VStack>
                             <Text bold fontSize="md">
-                                Phương thức vận chuyển
+                                Shipping method
                             </Text>
-                            <Text color="gray.500">Giao hàng tiêu chuẩn ({shippingCost.toLocaleString()} $)</Text>
+                            <Text color="gray.500">Standard delivery ({shippingCost.toLocaleString()} $)</Text>
                         </VStack>
                         <Icon as={MaterialIcons} name="chevron-right" size={6} />
                     </HStack>
@@ -181,8 +181,8 @@ const Payment = ({ route }: any) => {
                 <Box bg="white" p={4} mb={3}>
                     <HStack justifyContent="space-between" alignItems="center">
                         <VStack>
-                            <Text bold fontSize="md">Phương thức thanh toán</Text>
-                            <Text color="gray.500">Thanh toán khi nhận hàng</Text>
+                            <Text bold fontSize="md">Payment method</Text>
+                            <Text color="gray.500">Payment on delivery</Text>
                         </VStack>
                         <Icon as={MaterialIcons} name="chevron-right" size={6} />
                     </HStack>
@@ -191,11 +191,11 @@ const Payment = ({ route }: any) => {
                 {/* Chi tiết thanh toán */}
                 <Box bg="white" p={4} mb={3}>
                     <Text bold fontSize="md" mb={3}>
-                        Chi tiết thanh toán
+                        Payment details
                     </Text>
                     <VStack space={2}>
                         <HStack justifyContent="space-between">
-                            <Text>Tạm tính</Text>
+                            <Text>Temporary</Text>
                             <Text bold>{(product.Product_price * quantity).toLocaleString()} $</Text>
                         </HStack>
                         {selectedDiscount && (
@@ -205,12 +205,12 @@ const Payment = ({ route }: any) => {
                             </HStack>
                         )}
                         <HStack justifyContent="space-between">
-                            <Text>Phí vận chuyển</Text>
+                            <Text>Shipping fee</Text>
                             <Text bold>{shippingCost.toLocaleString()} $</Text>
                         </HStack>
                         <Divider my={2} />
                         <HStack justifyContent="space-between">
-                            <Text bold fontSize="lg">Tổng thanh toán</Text>
+                            <Text bold fontSize="lg">Total payment</Text>
                             <Text bold fontSize="lg" color="red.500">
                                 {(product.Product_price * quantity + shippingCost - (selectedDiscount?.value || 0)).toLocaleString()} $
                             </Text>
@@ -228,7 +228,7 @@ const Payment = ({ route }: any) => {
                     _text={{ fontWeight: 'bold', fontSize: 'lg' }}
                     onPress={handleCreateOrder}
                 >
-                    Đặt hàng
+                    Order
                 </Button>
             </Box>
         </Box>

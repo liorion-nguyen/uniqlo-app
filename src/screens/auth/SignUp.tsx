@@ -61,7 +61,7 @@ const SignUp = ({ navigation, route }: Props) => {
   const phoneInput = useRef<PhoneInput>(null);
 
   const handlePhoneChange = (formattedValue: string) => {
-    const countryCode = phoneInput.current?.getCountryCode(); 
+    const countryCode = phoneInput.current?.getCountryCode();
     formik.setFieldValue('phone.number', formattedValue);
     formik.setFieldValue('phone.country', countryCode);
   };
@@ -266,8 +266,8 @@ const SignUp = ({ navigation, route }: Props) => {
         )}
 
         <FormControl flexDirection="row" alignItems="center">
-        <Checkbox
-        isChecked={formik.values.policy}
+          <Checkbox
+            isChecked={formik.values.policy}
             onChange={() => formik.setFieldValue('policy', !formik.values.policy)}
             value="policy"
           >

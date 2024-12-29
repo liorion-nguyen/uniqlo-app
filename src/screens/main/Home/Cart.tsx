@@ -107,12 +107,12 @@ export default function Cart() {
     return (
         <Box style={styles.container} safeAreaTop>
             <Box style={styles.boxHeader}>
-                <Text style={styles.textTitle}>Giỏ hàng</Text>
+                <Text style={styles.textTitle}>Cart</Text>
                 <Box style={styles.boxTotal}>
-                    <Text style={styles.textDesTotal}>Tổng tiền: </Text>
+                    <Text style={styles.textDesTotal}>Total: </Text>
                     <Text style={styles.textTotal}>{totalAmount}đ</Text>
                     <TouchableOpacity style={styles.button} onPress={handleBuy}>
-                        <Text style={styles.textBtn}>Thanh toán</Text>
+                        <Text style={styles.textBtn}>Payment</Text>
                     </TouchableOpacity>
                 </Box>
             </Box>

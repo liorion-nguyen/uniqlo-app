@@ -16,7 +16,7 @@ const ProductFavorites = () => {
     return (
         <Box style={{ gap: 4 }}>
             <Box style={styles.header}>
-                <Text fontSize="lg" fontWeight="bold">Sản phẩm yêu thích</Text>
+                <Text fontSize="lg" fontWeight="bold">Favorite products</Text>
                 <Button onPress={() => {}} variant="link">
                     <Text fontSize="sm" color="#816551">View all</Text>
                 </Button>

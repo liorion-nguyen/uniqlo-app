@@ -113,7 +113,7 @@ const Setting = ({ navigation }: Props) => {
         <Column flex="1" space="6" mt="16">
           <View style={styles.purchaseContainer}>
             <View style={styles.purchaseTitleRow}>
-              <Text style={styles.purchaseTitle}>Đơn mua</Text>
+              <Text style={styles.purchaseTitle}>Purchase history</Text>
               <Button
                 // shadow={5}
                 rightIcon={<Icon as={<MaterialIcons name="keyboard-arrow-right" />} size={5} color="primary.600" />}
@@ -121,7 +121,7 @@ const Setting = ({ navigation }: Props) => {
                 onPress={() => navigation.navigate("Purchase", { purchase: purchases[1] })}
                 style={styles.purchaseButton}
               >
-                Xem lịch sử mua hàng
+                View purchase history
               </Button>
             </View>
             <View style={styles.purchaseBoxItem}>
@@ -141,19 +141,19 @@ const Setting = ({ navigation }: Props) => {
             onPress={() => navigation.navigate("FillProfile")}
             leftIconName="person-outline"
           >
-            Sửa thông tin
+            Edit profile
           </SettingButton>
           <SettingButton
             onPress={() => navigation.navigate("ChangePassword")}
             leftIconName="lock-open"
           >
-            Mật khẩu
+            Change password
           </SettingButton>
           <SettingButton
             leftIconName="chatbox-outline"
             onPress={() => navigation.navigate("ResponseForUs")}
           >
-            Trợ giúp & phản hồi
+            Help & feedback
           </SettingButton>
         </Column>
         <Button
@@ -166,7 +166,7 @@ const Setting = ({ navigation }: Props) => {
           }}
           rounded="full"
         >
-          Đăng xuất
+          Logout
         </Button>
       </Column>
     </>

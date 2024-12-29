@@ -43,7 +43,7 @@ export default function ListVoucher() {
         <View>
             <Pressable onPress={() => setShowModal(true)}>
                 <HStack alignItems="center">
-                    <Text color="gray.500">Chọn Voucher</Text>
+                    <Text color="gray.500">Select Voucher</Text>
                     <Icon as={MaterialIcons} name="chevron-right" size={6} />
                 </HStack>
             </Pressable>
@@ -65,7 +65,7 @@ export default function ListVoucher() {
                                                 <VStack>
                                                     <Text bold>{voucher.code}</Text>
                                                     <Text>{voucher.description}</Text>
-                                                    <Text color="green.500">Giảm {voucher.value}%</Text>
+                                                    <Text color="green.500">Discount {voucher.value}%</Text>
                                                 </VStack>
                                             </HStack>
                                         </Pressable>
@@ -73,10 +73,10 @@ export default function ListVoucher() {
                                 ))}
 
                                 <Button mt={4} colorScheme="red" onPress={handleConfirm} isDisabled={!selectedVoucher}>
-                                    Xác nhận
+                                    Confirm
                                 </Button>
                                 <Button mt={2} variant="ghost" onPress={() => setShowModal(false)}>
-                                    Hủy
+                                    Cancel
                                 </Button>
                             </VStack>
                         </ScrollView>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",  // Làm mờ background khi modal hiển thị
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
     modalContent: {
         width: "80%",

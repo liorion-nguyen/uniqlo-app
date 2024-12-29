@@ -97,7 +97,7 @@ export default function ProductDetail({ route }: { route: any }) {
                             <Text style={styles.productPrice}>{product.Product_price.toLocaleString()} $</Text>
                         </View>
                         <View style={styles.productSoldContainer}>
-                            <Text style={styles.productSold}>Đã bán {formatProductCount(product.Product_count)} sản phẩm</Text>
+                            <Text style={styles.productSold}>Sold {formatProductCount(product.Product_count)} products</Text>
                             <TouchableOpacity onPress={handleFavorite}>
                                 {
                                     isFavorite ?
@@ -117,7 +117,7 @@ export default function ProductDetail({ route }: { route: any }) {
                     <View style={styles.ratingContainer}>
                         <Text style={styles.ratingText}>{averageRating} </Text>
                         <Icon as={<MaterialIcons name="star" />} size={5} color="yellow.500" />
-                        <Text style={styles.desRatingText}>Đánh giá sản phẩm ({product?.reviews?.length})</Text>
+                        <Text style={styles.desRatingText}>Product Reviews ({product?.reviews?.length})</Text>
                     </View>
 
                     <Text style={styles.sectionTitle}>Description</Text>
@@ -134,7 +134,7 @@ export default function ProductDetail({ route }: { route: any }) {
                 <Box style={{ padding: 10, gap: 10 }}>
                     <Box style={styles.title}>
                         <View style={styles.line}></View>
-                        <Text>Có thể bạn cũng thích</Text>
+                            <Text>You may also like</Text>
                         <View style={styles.line}></View>
                     </Box>
                     <RecommendedProducts productsProps={shuffleArray(products)} />

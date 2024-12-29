@@ -41,7 +41,7 @@ export default function SurfVideos() {
     return (
         <View style={{ gap: 4 }}>
             <Box>
-                <Text fontSize="lg" fontWeight="bold">Lướt Uniqlo Video - Giảm 50%</Text>
+                <Text fontSize="lg" fontWeight="bold">Browse Uniqlo Video - 50% off</Text>
             </Box>
             <ScrollView horizontal style={styles.scrollView}>
                 {
